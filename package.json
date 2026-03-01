@@ -1,0 +1,52 @@
+{
+  "name": "markdown-live-preview",
+  "version": "1.0.0",
+  "description": "[Markdown Live Preview](https://markdownlivepreview.com/) is a tiny web tool to preview Markdown formatted text.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server public",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanabe/markdown-live-preview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanabe/markdown-live-preview/issues"
+  },
+  "homepage": "https://github.com/tanabe/markdown-live-preview#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "vite": "^6.3.6"
+  },
+  "dependencies": {
+    "@mermaid-js/layout-elk": "^0.2.0",
+    "@monaco-editor/react": "^4.7.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/dompurify": "^3.0.5",
+    "@types/lz-string": "^1.3.34",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "autoprefixer": "^10.4.24",
+    "dompurify": "^3.2.5",
+    "github-markdown-css": "^5.8.1",
+    "lz-string": "^1.5.0",
+    "marked": "^15.0.7",
+    "mermaid": "^11.12.2",
+    "monaco-editor": "^0.52.2",
+    "postcss": "^8.5.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "storehouse-js": "github:tanabe/Storehouse-js",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  }
+}

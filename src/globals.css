@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "github-markdown-css/github-markdown-light.css";
+
+/* Mermaid diagram container with pan/zoom */
+.mermaid-container {
+  @apply relative overflow-hidden border border-gray-300 rounded-md bg-gray-50 cursor-grab my-4 touch-none;
+  height: 350px;
+}
+
+.mermaid-container pre.mermaid {
+  @apply m-0 p-0 bg-transparent border-none overflow-visible relative h-full;
+}
+
+.mermaid-container pre.mermaid svg {
+  @apply w-full h-full;
+}
+
+.mermaid-controls {
+  @apply absolute top-2 right-2 flex gap-1 z-10 opacity-0 transition-opacity duration-200;
+}
+
+.mermaid-container:hover .mermaid-controls {
+  @apply opacity-100;
+}
+
+.mermaid-btn {
+  @apply w-7 h-7 border border-gray-300 rounded-md bg-white text-gray-700 text-base font-bold cursor-pointer flex items-center justify-center p-0 leading-none shadow-sm transition-colors duration-150;
+}
+
+.mermaid-btn:hover {
+  @apply bg-gray-100 border-gray-400;
+}
+
+.mermaid-btn:active {
+  @apply bg-gray-200;
+}
+
+/* Fullscreen mode */
+.mermaid-container:fullscreen {
+  @apply bg-white h-screen border-none rounded-none;
+  max-height: none;
+}
+
+.mermaid-container:fullscreen .mermaid-controls {
+  @apply opacity-100 top-4 right-4;
+}
