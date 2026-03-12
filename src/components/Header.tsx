@@ -4,6 +4,8 @@ interface HeaderProps {
   onReset: () => void
   onCopy: () => void
   onShare: () => Promise<void>
+  onDownload: () => void
+  onOpenLocal: () => void
   scrollSync: boolean
   onScrollSyncChange: (enabled: boolean) => void
 }
@@ -12,6 +14,8 @@ export default function Header({
   onReset,
   onCopy,
   onShare,
+  onDownload,
+  onOpenLocal,
   scrollSync,
   onScrollSyncChange,
 }: HeaderProps) {
@@ -33,18 +37,28 @@ export default function Header({
   return (
     <header className="flex justify-between items-center px-4 py-2 w-full bg-[#444] text-xs text-white">
       <div className="flex items-center gap-4">
-        <a href="/markdown-live-preview" className="text-white no-underline hover:underline">
-          Markdown Live Preview
+        <a href="/" className="text-white no-underline hover:underline font-bold">
+          Markdown Editor
         </a>
         <a
           href="#"
           className="text-white no-underline hover:underline"
           onClick={(e) => {
             e.preventDefault()
-            onReset()
+            onOpenLocal()
           }}
         >
-          Reset
+          Open
+        </a>
+        <a
+          href="#"
+          className="text-white no-underline hover:underline"
+          onClick={(e) => {
+            e.preventDefault()
+            onDownload()
+          }}
+        >
+          Download
         </a>
         <a
           href="#"
@@ -65,6 +79,16 @@ export default function Header({
           }}
         >
           {shareLabel}
+        </a>
+        <a
+          href="#"
+          className="text-white no-underline hover:underline"
+          onClick={(e) => {
+            e.preventDefault()
+            onReset()
+          }}
+        >
+          Reset
         </a>
         <label className="flex items-center gap-1 select-none cursor-pointer">
           <input

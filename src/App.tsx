@@ -135,12 +135,49 @@ export default function App() {
     await navigator.clipboard.writeText(link)
   }, [content, generateLink])
 
+  const handleDownload = useCallback(() => {
+    const value = editorRef.current?.getValue() ?? content
+    const blob = new Blob([value], { type: 'text/markdown' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'document.md'
+    a.click()
+    URL.revokeObjectURL(url)
+  }, [content])
+
+  const handleOpenLocal = useCallback(() => {
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = '.md,.txt,text/markdown,text/plain'
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0]
+      if (!file) return
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        const text = e.target?.result as string
+        setContent(text)
+        setHasEdited(true)
+        saveContent(text)
+        updateUrl(text)
+        if (editorRef.current) {
+          editorRef.current.setValue(text)
+          editorRef.current.revealPosition({ lineNumber: 1, column: 1 })
+        }
+      }
+      reader.readAsText(file)
+    }
+    input.click()
+  }, [saveContent, updateUrl])
+
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Header
         onReset={handleReset}
         onCopy={handleCopy}
         onShare={handleShare}
+        onDownload={handleDownload}
+        onOpenLocal={handleOpenLocal}
         scrollSync={scrollSync}
         onScrollSyncChange={handleScrollSyncChange}
       />
